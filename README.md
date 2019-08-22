@@ -1,1 +1,1 @@
-# beer-run
+# Beer Run
