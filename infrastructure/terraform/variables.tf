@@ -2,7 +2,11 @@ variable "region" {
   default = "us-west-2"
 }
 
-variable "prefix" {
+provider "aws" {
+  region = "${var.region}"
+}
+
+variable "domain" {
   default = "beerrun.virtualmadden.dev"
 }
 
@@ -13,15 +17,10 @@ data "aws_route53_zone" "origin" {
   private_zone = false
 }
 
-provider "aws" {
-  region = "${var.region}"
-}
-
 terraform {
   backend "s3" {
     bucket               = "vrtlmdn-terraform-state"
-    key                  = "beer_run"
-    workspace_key_prefix = "beer_run"
+    key                  = "beer-run"
     region               = "us-west-2"
   }
 }
