@@ -1,9 +1,9 @@
 resource "aws_cloudfront_origin_access_identity" "origin" {
-  comment = "${var.prefix}"
+  comment = "${var.domain}"
 }
 
 resource "aws_cloudfront_distribution" "origin" {
-  aliases = ["${var.prefix}"]
+  aliases = ["${var.domain}"]
   default_root_object = "index.html"
   enabled         = true
   is_ipv6_enabled = true
